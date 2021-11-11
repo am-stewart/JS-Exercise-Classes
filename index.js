@@ -60,7 +60,7 @@ class Person {
   }
 }
 const ben = new Person('Ben', 33);
-console.log(ben.toString());
+console.log('task 1:', ben.toString());
 ben.eat('pizza');
 ben.eat('salad');
 ben.eat('brownie');
@@ -104,6 +104,12 @@ class Car {
   }
 }
 
+const silverBullet = new Car('Corolla', 20)
+console.log('task 2:', silverBullet);
+silverBullet.fill(15);
+console.log(silverBullet.tank);
+console.log(silverBullet.drive(400));
+
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -117,8 +123,23 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  
+  constructor(attrs){
+    this.name = attrs.name;
+    this.age = attrs.age;
+    this.location = attrs.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
+
+const jennifer = new Lambdasian({
+  name: 'Jennifer',
+  age: 29,
+  location: 'Texas',
+});
+console.log(jennifer);
+console.log(jennifer.speak());
 
 /*
   TASK 4
