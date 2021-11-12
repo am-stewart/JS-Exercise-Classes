@@ -167,7 +167,7 @@ class Instructor extends Lambdasian{
     return `Today we are learning about ${subject}`;
   }
   grade(student, subject){
-    return `${student} receives a perfect score on ${subject}`;
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 }
 
@@ -188,7 +188,7 @@ const alli = {
 
 console.log('task 4:', brit);
 console.log(brit.demo('CSS'));
-console.log(brit.grade(alli.name, 'CSS'));
+console.log(brit.grade(alli, 'CSS'));
 
 /*
   TASK 5
@@ -248,9 +248,37 @@ console.log(allison.sprintChallenge('HTML'));
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-   
+class ProjectManager extends Instructor{
+   constructor(attrs){
+     super(attrs);
+     this.gradClassName = attrs.gradClassName;
+     this.favInstructor = attrs.favInstructor;
+   }
+   standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+   }
+   debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
+   }
 }
+
+const jessica = new ProjectManager({
+  name:'Jessica',
+  age: 24,
+  location: 'USA',
+  specialty: 'Web Development',
+  favLanguage: 'Python',
+  catchPhrase: 'Friday Energy',
+  gradClassName: 'Web 49',
+  favInstructor: 'Brit'
+});
+const bob = {
+  name: 'Bob',
+  age: 35,
+  location: 'USA' 
+}
+
+console.log(jessica.grade(bob, 'JavaScript'));
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
